@@ -53,34 +53,34 @@ func retirar(estacionamento []int, C int, placa int) []int {
 }
 
 func main() {
-    var N,C,i,comparador,faturamento,placa int
-		var vaga Vaga 
-		var e string 
-		var estacionamento []int
-		for {
-			fmt.Printf("for")
-			 _,err := fmt.Scanf("%d %d", &C, &N)
-			 if err == io.EOF {
-				  break
-			 }
-			 for i = 0; i < C; i++ {
-					estacionamento = append(estacionamento, 0)
-			 }
-	     for i = 0; i < N; i++ { 
-					fmt.Scanf("%s %d", &e, &placa)
-					if e == "C" {
-						fmt.Scanf("%d", &comparador)
-						vaga = maiorVaga(estacionamento, C, comparador)
-						if vaga.tamanho >= comparador {
-							 faturamento += 10
-							 estacionamento = colocar(estacionamento,C,placa, vaga)
-						}
-					} else {
-							estacionamento = retirar(estacionamento,C,placa)
-					}
-			 }
+	var N,C,i,comparador,faturamento,placa int
+	var vaga Vaga 
+	var e string 
+	var estacionamento []int
+	for {
+		fmt.Printf("for")
+		_,err := fmt.Scanf("%d %d", &C, &N)
+		if err == io.EOF {
+			break
 		}
-		fmt.Printf("%d\n",faturamento)
+		for i = 0; i < C; i++ {
+			estacionamento = append(estacionamento, 0)
+		}
+	     	for i = 0; i < N; i++ { 
+			fmt.Scanf("%s %d", &e, &placa)
+			if e == "C" {
+				fmt.Scanf("%d", &comparador)
+				vaga = maiorVaga(estacionamento, C, comparador)
+				if vaga.tamanho >= comparador {
+					faturamento += 10
+					estacionamento = colocar(estacionamento,C,placa, vaga)
+				}
+			} else {
+				estacionamento = retirar(estacionamento,C,placa)
+			}
+		}
+	}
+	fmt.Printf("%d\n",faturamento)
 }
 
 
